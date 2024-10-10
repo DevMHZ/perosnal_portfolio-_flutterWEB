@@ -1,5 +1,5 @@
-import 'package:Mohamad_Alzoubi_personal_website/presentation/pages/project_detail/project_detail_page.dart';
-import 'package:Mohamad_Alzoubi_personal_website/presentation/widgets/project_item.dart';
+import 'package:Mohamad_Alzoubi_personal_website/views/project_detail/project_detail_page.dart';
+import 'package:Mohamad_Alzoubi_personal_website/core/widgets/project_item.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
