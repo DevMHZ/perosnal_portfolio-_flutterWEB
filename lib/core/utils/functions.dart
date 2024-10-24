@@ -1,3 +1,4 @@
+import 'package:Mohamad_Alzoubi_personal_website/views/blogs/view/blogs_screen.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/project_detail/project_detail_page.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/widgets/project_item.dart';
 import 'package:flutter/material.dart';
@@ -47,4 +48,6 @@ class Functions {
       ),
     );
   }
+
+  static void navigateToBlog({required BuildContext context, required List<BlogPostData> dataSource, required BlogPostData currentBlog, required int currentBlogIndex}) {}
 }

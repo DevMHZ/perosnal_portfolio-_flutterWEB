@@ -7,7 +7,7 @@ class AppLogo extends StatelessWidget {
     this.title = "MHZ",
     this.titleColor = AppColors.black,
     this.titleStyle,
-    this.fontSize = 60,
+    this.fontSize = 40,
   }) : super(key: key);
 
   final String title;

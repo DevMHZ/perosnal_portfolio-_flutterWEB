@@ -1,9 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/values/values.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 class AppTheme {
   static const _lightFillColor = Colors.black;
 

@@ -1,19 +1,17 @@
 import 'package:Mohamad_Alzoubi_personal_website/core/layout/adaptive.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/utils/functions.dart';
-import 'package:Mohamad_Alzoubi_personal_website/views/home/widgets/scroll_down.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/widgets/socials.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/works/works_page.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/widgets/animated_bubble_button.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/widgets/animated_line_through_text.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/widgets/animated_positioned_widget.dart';
-import 'package:Mohamad_Alzoubi_personal_website/core/widgets/animated_slide_transtion.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/widgets/animated_text_slide_box_transition.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/widgets/spaces.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-const kDuration = Duration(milliseconds: 600);
+const kDuration = Duration(milliseconds: 700);
 
 class HomePageHeader extends StatefulWidget {
   const HomePageHeader({
@@ -70,7 +68,6 @@ class _HomePageHeaderState extends State<HomePageHeader>
       if (status == AnimationStatus.completed) {
         rotationController.reset();
         rotationController.forward();
-        // rotationController.reverse();
       }
     });
     controller.forward();
@@ -90,39 +87,43 @@ class _HomePageHeaderState extends State<HomePageHeader>
   Widget build(BuildContext context) {
     final double screenWidth = widthOfScreen(context);
     final double screenHeight = heightOfScreen(context);
+
     final EdgeInsets textMargin = EdgeInsets.only(
       left: responsiveSize(
         context,
-        20,
+        10,
         screenWidth * 0.15,
-        sm: screenWidth * 0.15,
+        sm: screenWidth * 0.10,
       ),
       top: responsiveSize(
         context,
         60,
         screenHeight * 0.35,
-        sm: screenHeight * 0.35,
+        sm: screenHeight * 0.25,
       ),
-      bottom: responsiveSize(context, 20, 40),
+      bottom: responsiveSize(context, 10, 20),
     );
+
     final EdgeInsets padding = EdgeInsets.symmetric(
-      horizontal: screenWidth * 0.1,
-      vertical: screenHeight * 0.1,
+      horizontal: responsiveSize(
+          context, 10, 40), // Reduced padding for smaller screens
+      vertical: responsiveSize(context, 20, screenHeight * 0.5),
     );
+
     final EdgeInsets imageMargin = EdgeInsets.only(
       right: responsiveSize(
         context,
-        20,
+        10,
         screenWidth * 0.05,
-        sm: screenWidth * 0.05,
+        sm: screenWidth * 0.03, // Adjusted margin for better fit on mobile
       ),
       top: responsiveSize(
         context,
-        30,
+        20, // Reduced top margin for mobile
         screenHeight * 0.15,
-        sm: screenHeight * 0.25,
+        sm: screenHeight * 0.20,
       ),
-      bottom: responsiveSize(context, 20, 40),
+      bottom: responsiveSize(context, 10, 20),
     );
 
     return Container(
@@ -130,64 +131,53 @@ class _HomePageHeaderState extends State<HomePageHeader>
       color: AppColors.accentColor2.withOpacity(0.35),
       child: Stack(
         children: [
-          Container(
-            margin: EdgeInsets.only(
-              top: assignHeight(context, 0.17),
-            ),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: WhiteCircle(),
-            ),
-          ),
           ResponsiveBuilder(builder: (context, sizingInformation) {
             double screenWidth = sizingInformation.screenSize.width;
+
+            // Mobile layout adjustments
             if (screenWidth < RefinedBreakpoints().tabletNormal) {
               return Column(
                 children: [
                   Container(
                     padding: padding,
-                    child: AnimatedSlideTranstion(
-                      controller: controller,
-                      position: animation,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          RotationTransition(
-                            turns: rotationController,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          width: screenWidth,
+                        ),
+                        CircleAvatar(
+                          radius: screenWidth / 3.5,
+                          backgroundColor: Colors.white,
+                          child: ClipOval(
                             child: Image.asset(
-                              ImagePath.DEV_SKILLS_2,
-                              width: screenWidth,
+                              ImagePath.DEV_MEDITATE,
+                              width: screenWidth * 0.6,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          CircleAvatar(
-                              radius: screenWidth /
-                                  2, // Set the radius to half the width for a perfect circle
-                              backgroundColor: Colors
-                                  .white, // Optional: Set a background color
-                              child: ClipOval(
-                                child: Image.asset(
-                                  ImagePath.DEV_MEDITATE,
-                                  width: screenWidth, // Image size
-                                  fit: BoxFit.cover, // Cover
-                                ),
-                              )),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
-                    padding: padding.copyWith(top: 0),
-                    child: Container(
-                      width: screenWidth,
-                      child: AboutDev(
-                        controller: widget.controller,
-                        width: screenWidth,
-                      ),
+                    padding: padding.copyWith(top: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .center, // Center align text for mobile
+                      children: [
+                        AboutDev(
+                          controller: widget.controller,
+                          width: screenWidth *
+                              0.9, // Adjust width for mobile layout
+                        ),
+                      ],
                     ),
                   ),
                 ],
               );
             } else {
+              // Original desktop/tablet layout remains unchanged
               return Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -213,16 +203,12 @@ class _HomePageHeaderState extends State<HomePageHeader>
                         ),
                         CircleAvatar(
                           radius: screenWidth *
-                              0.115, // Half of 0.35 for a perfect circle
+                              0.115, // Adjusted for desktop/tablet
                           child: ClipOval(
                             child: Image.asset(
                               ImagePath.DEV_MEDITATE,
-                              width: screenWidth *
-                                  0.25, // Set width to the same as CircleAvatar
-                              height: screenWidth *
-                                  0.25, // Set height to the same as CircleAvatar
-                              fit: BoxFit
-                                  .cover, // Ensure it covers the CircleAvatar completely
+                              width: screenWidth * 0.25,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
@@ -233,41 +219,6 @@ class _HomePageHeaderState extends State<HomePageHeader>
               );
             }
           }),
-          Positioned(
-            right: 0,
-            bottom: 0,
-            child: ResponsiveBuilder(
-              builder: (context, sizingInformation) {
-                double screenWidth = sizingInformation.screenSize.width;
-                if (screenWidth < RefinedBreakpoints().tabletNormal) {
-                  return Container();
-                } else {
-                  return InkWell(
-                    hoverColor: Colors.transparent,
-                    onTap: () {
-                      Scrollable.ensureVisible(
-                        widget.scrollToWorksKey.currentContext!,
-                        duration: kDuration,
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(right: 24, bottom: 40),
-                      child: MouseRegion(
-                        onEnter: (e) => scrollDownButtonController.forward(),
-                        onExit: (e) => scrollDownButtonController.reverse(),
-                        child: AnimatedSlideTranstion(
-                          controller: scrollDownButtonController,
-                          beginOffset: Offset(0, 0),
-                          targetOffset: Offset(0, 0.1),
-                          child: ScrollDownButton(),
-                        ),
-                      ),
-                    ),
-                  );
-                }
-              },
-            ),
-          ),
         ],
       ),
     );
@@ -288,7 +239,7 @@ class WhiteCircle extends StatelessWidget {
       width: widthOfCircle,
       height: widthOfCircle,
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: const Color(0xFF027dfe),
         borderRadius: BorderRadius.all(
           Radius.circular(widthOfCircle / 2),
         ),
@@ -434,7 +385,7 @@ class _AboutDevState extends State<AboutDev> {
       items.add(
         AnimatedLineThroughText(
           text: data[index].name,
-          isUnderlinedByDefault: true,
+          isUnderlinedByDefault: false,
           controller: widget.controller,
           hasSlideBoxAnimation: true,
           hasOffsetAnimation: true,

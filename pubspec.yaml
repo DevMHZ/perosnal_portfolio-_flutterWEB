@@ -11,6 +11,7 @@ dependencies:
   animated_splash_screen: null
   bottom_nav_layout: null
   cupertino_icons: null
+  control_style:
   dartz: ^0.10.1
   dio: null
   flutter:
@@ -30,6 +31,7 @@ dependencies:
   responsive_framework: any
   url_launcher: null
   visibility_detector: ^0.4.0+2
+  carousel_slider:
 
 dev_dependencies:
   flutter_lints: ^4.0.0
@@ -42,6 +44,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/projects/
+    - assets/images/client3.png
     - assets/images/projects/aerium-v1/
     - assets/images/projects/aerium-v2/
     - assets/images/projects/disneyplus/

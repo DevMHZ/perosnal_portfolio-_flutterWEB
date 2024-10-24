@@ -66,7 +66,8 @@ class SpaceH24 extends StatelessWidget {
 class SpaceH30 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: Colors.grey[100],
       height: 30.0,
     );
   }
@@ -190,7 +191,6 @@ class SpaceW24 extends StatelessWidget {
   }
 }
 
-
 class SpaceW30 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -200,7 +200,6 @@ class SpaceW30 extends StatelessWidget {
   }
 }
 
-
 class SpaceW36 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -209,7 +208,6 @@ class SpaceW36 extends StatelessWidget {
     );
   }
 }
-
 
 class SpaceW40 extends StatelessWidget {
   @override

@@ -97,7 +97,7 @@ class _NavItemState extends State<NavItem> {
                 child: Align(
                   alignment: Alignment.center,
                   child: AnimatedLineThroughText(
-                    text: widget.title.toLowerCase(),
+                    text: widget.title.toUpperCase(),
                     isUnderlinedOnHover: false,
                     textStyle: widget.titleStyle ??
                         widget.titleStyle ??
@@ -139,7 +139,7 @@ class _NavItemState extends State<NavItem> {
                   child: Align(
                     alignment: Alignment.center,
                     child: AnimatedLineThroughText(
-                      text: widget.title.toLowerCase(),
+                      text: widget.title.toUpperCase(),
                       isUnderlinedOnHover: false,
                       textStyle: widget.titleStyle ??
                           textTheme.bodyLarge?.copyWith(

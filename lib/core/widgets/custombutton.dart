@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class AeriumButton extends StatefulWidget {
-  AeriumButton({
+class CustomButton extends StatefulWidget {
+  CustomButton({
     Key? key,
     required this.title,
     this.titleStyle,
@@ -50,7 +50,7 @@ class AeriumButton extends StatefulWidget {
   _AeriumButtonState createState() => _AeriumButtonState();
 }
 
-class _AeriumButtonState extends State<AeriumButton>
+class _AeriumButtonState extends State<CustomButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _textAndIconColor;

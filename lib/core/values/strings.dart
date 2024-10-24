@@ -8,6 +8,7 @@ class StringConst {
 
   static const String HOME = "Home";
   static const String ABOUT = "About";
+  static const String BLOGS = "My blog";
   static const String WORKS = "Works";
   static const String EXPERIENCE = "Experience";
   static const String PRIVACY_POLICY = "Privacy Policy";
@@ -80,7 +81,7 @@ class StringConst {
   static const String FAMOUS_QUOTE_AUTHOR = "a wise man";
   static const String WORK_TOGETHER = "Let's work together.";
   static const String AVAILABLE_FOR_FREELANCE =
-      "I'm available for Consultancy & Freelancing and Meet a new friend!.";
+      "I'm available for Consultancy & Freelancing and Meet a new friends!.";
   static const String SAY_HELLO = "Say Hello";
 
   // Works Page
@@ -133,6 +134,7 @@ class StringConst {
   //routes
   static const String LOADING_PAGE = "/";
   static const String HOME_PAGE = "/home";
+  static const String BLOGS_PAGE = "/blogs";
   static const String ABOUT_PAGE = "/about";
   static const String WORKS_PAGE = "/works";
   static const String CONTACT_PAGE = "/contact";

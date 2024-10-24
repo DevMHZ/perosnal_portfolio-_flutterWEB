@@ -1,6 +1,6 @@
 import 'package:Mohamad_Alzoubi_personal_website/views/about/about_page.dart';
+import 'package:Mohamad_Alzoubi_personal_website/views/blogs/view/blogs_screen.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/experience_page.dart';
-import 'package:Mohamad_Alzoubi_personal_website/views/privacy_policy_page.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/project_detail/project_detail_page.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/works/works_page.dart';
 import 'package:flutter/material.dart';
@@ -23,16 +23,16 @@ class RouteConfiguration {
   /// take priority.
   static List<Path> paths = [
     Path(
-      r'^' + PrivacyPolicyPage.pageRoute,
-      (context, matches) => const PrivacyPolicyPage(),
-    ),
-    Path(
       r'^' + AboutPage.aboutPageRoute,
       (context, matches) => const AboutPage(),
     ),
     Path(
       r'^' + WorksPage.worksPageRoute,
       (context, matches) => const WorksPage(),
+    ),
+    Path(
+      r'^' + BlogsScreen.BlogsScreenRoute,
+      (context, matches) => const BlogsScreen(),
     ),
     Path(
       r'^' + ProjectDetailPage.projectDetailPageRoute,

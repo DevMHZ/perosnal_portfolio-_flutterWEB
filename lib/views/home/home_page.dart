@@ -1,17 +1,11 @@
-import 'package:Mohamad_Alzoubi_personal_website/core/layout/adaptive.dart';
-import 'package:Mohamad_Alzoubi_personal_website/core/utils/functions.dart';
+import 'package:Mohamad_Alzoubi_personal_website/core/widgets/spaces.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/home/widgets/home_page_header.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/home/widgets/loading_page.dart';
+import 'package:Mohamad_Alzoubi_personal_website/views/home/widgets/what_they_said.dart';
 import 'package:Mohamad_Alzoubi_personal_website/views/widgets/animated_footer.dart';
-import 'package:Mohamad_Alzoubi_personal_website/core/widgets/animated_positioned_text.dart';
-import 'package:Mohamad_Alzoubi_personal_website/core/widgets/animated_text_slide_box_transition.dart';
-import 'package:Mohamad_Alzoubi_personal_website/core/widgets/custom_spacer.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/widgets/page_wrapper.dart';
-import 'package:Mohamad_Alzoubi_personal_website/core/widgets/spaces.dart';
 import 'package:flutter/material.dart';
 import 'package:Mohamad_Alzoubi_personal_website/core/values/values.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class HomePage extends StatefulWidget {
   static const String homePageRoute = StringConst.HOME_PAGE;
@@ -26,13 +20,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   GlobalKey key = GlobalKey();
   ScrollController _scrollController = ScrollController();
   late AnimationController _viewProjectsController;
+  // ignore: unused_field
   late AnimationController _recentWorksController;
   late AnimationController _slideTextController;
   late NavigationArguments _arguments;
 
-  // Define common padding and margin
-  final EdgeInsets _commonPadding = EdgeInsets.all(16.0);
-  final EdgeInsets _commonMargin = EdgeInsets.symmetric(horizontal: 16.0);
+  PageController _pageController = PageController();
 
   @override
   void initState() {
@@ -67,15 +60,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _viewProjectsController.dispose();
     _slideTextController.dispose();
     _scrollController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     getArguments();
-    double projectItemHeight = assignHeight(context, 0.4);
-    double subHeight = (3 / 4) * projectItemHeight;
-    double extra = projectItemHeight - subHeight;
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return PageWrapper(
@@ -105,8 +98,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             controller: _slideTextController,
             scrollToWorksKey: key,
           ),
-          CustomSpacer(heightFactor: 0.1),
-          CustomSpacer(heightFactor: 0.05),
+          SpaceH30(),
+          WhatTheySaidSection(),
           AnimatedFooter(),
         ],
       ),
